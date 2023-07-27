@@ -7,3 +7,4 @@ bin/*
 src/*
 !src/*.cpp
 !src/*.h
+architecture.uxf
