@@ -4,7 +4,4 @@
 .vscode/c_cpp_properties.json
 .vs/*
 bin/*
-src/*
-!src/*.cpp
-!src/*.h
 architecture.uxf
