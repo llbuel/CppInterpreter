@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 
-#include "Interpreter.h"
-
 bool checkForQuit() {
 	bool quitBool{ false };
 
@@ -26,6 +24,8 @@ bool checkForQuit() {
 			quitBool = false;
 		}
 	}
+
+	return false;
 }
 
 bool consoleInteraction() {
@@ -45,10 +45,7 @@ bool consoleInteraction() {
 		}
 	}
 	else {
-		Interpreter interpreter(text);
-		std::string result = interpreter.expr();
-
-		std::cout << "\n" << text << " = " << "\n\n    " << result << "\n\n";
+		std::cout << "\n" << text << " = " << "\n\n    " << text << "\n\n";
 
 		return true;
 	}
