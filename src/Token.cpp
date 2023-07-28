@@ -19,3 +19,7 @@ char Token::getNextChar() const {
 char Token::peekChar() const {
 
 }
+
+TokenType* Token::getType() const {
+
+}

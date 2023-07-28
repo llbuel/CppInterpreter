@@ -2,6 +2,8 @@
 
 #include <string>
 
+class TokenType;
+
 class Token {
 protected:
 	std::string m_text;
@@ -18,4 +20,6 @@ private:
 
 public:
 	Token();
+
+	TokenType* getType() const;
 };
