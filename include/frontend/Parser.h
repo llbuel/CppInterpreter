@@ -8,10 +8,12 @@
 #include "frontend/Scanner.h"
 #include "frontend/Token.h"
 
+namespace frontend {
+
 class Parser {
 protected:
-    static SymTab m_symTab;
-    std::unique_ptr<ICode> m_ICode;
+    static intermediate::SymTab m_symTab;
+    std::unique_ptr<intermediate::ICode> m_ICode;
     Scanner& m_scanner;
 
 public:
@@ -22,5 +24,7 @@ public:
 
     Token getCurrentToken() const;
     Token getNextToken() const;
-    std::unique_ptr<ICode> createICode();
+    std::unique_ptr<intermediate::ICode> createICode();
 };
+
+} // namespace frontend

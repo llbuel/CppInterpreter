@@ -6,6 +6,8 @@
 #include "frontend/Source.h"
 #include "frontend/TokenValue.h"
 
+namespace frontend {
+
 class TokenType;
 
 class Token {
@@ -25,3 +27,5 @@ protected:
 public:
 	Token(Source source);
 };
+
+} // namespace frontend

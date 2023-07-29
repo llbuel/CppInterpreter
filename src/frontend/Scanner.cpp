@@ -4,6 +4,8 @@
 
 #include "frontend/Scanner.h"
 
+namespace frontend {
+
 Scanner::Scanner(Source source) : m_source(source), m_currentToken(source) {}
 
 Token Scanner::getCurrentToken() const {
@@ -41,3 +43,5 @@ char Scanner::getNextChar() {
         return Source::m_EOF;
     }
 }
+
+} // namespace frontend

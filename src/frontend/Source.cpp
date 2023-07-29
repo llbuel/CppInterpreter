@@ -3,6 +3,8 @@
 
 #include "frontend/Source.h"
 
+namespace frontend {
+
 char Source::m_EOL = '\n';
 char Source::m_EOF = (char)0;
 
@@ -93,3 +95,5 @@ void Source::closeSource() {
         }
     }
 }
+
+} // namespace frontend

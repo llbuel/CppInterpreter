@@ -3,6 +3,8 @@
 
 #include "frontend/Token.h"
 
+namespace frontend {
+
 Token::Token(Source source) : m_source(source), m_lineNumber(source.getLineNumber()), m_position(source.getPosition()) {
     extract();
 }
@@ -48,3 +50,5 @@ char Token::peekChar() {
         return Source::m_EOF;
     }
 }
+
+} // namespace frontend

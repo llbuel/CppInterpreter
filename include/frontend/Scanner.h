@@ -5,6 +5,8 @@
 #include "frontend/Source.h"
 #include "frontend/Token.h"
 
+namespace frontend {
+
 class Scanner {
 protected:
     Source m_source;
@@ -22,3 +24,5 @@ public:
     char getCurrentChar();
     char getNextChar();
 };
+
+} // namespace frontend

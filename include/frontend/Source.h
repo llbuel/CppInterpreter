@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 
+namespace frontend {
+
 class Source {
 private:
     std::ifstream* m_reader;
@@ -26,3 +28,5 @@ public:
     int getLineNumber() const { return m_lineNumber; }
     int getPosition() const { return m_currentPosition; }
 };
+
+} // namespace frontend
