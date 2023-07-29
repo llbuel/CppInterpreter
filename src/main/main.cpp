@@ -16,7 +16,8 @@ bool checkForQuit() {
 			return true;
 		}
 		else if (quitInput == "N" || quitInput == "n") {
-			std::cout << "\nReturning to program.\n'quit' is a reserved name in CLAB.\n\n";
+			std::cout << "\n";
+			
 			quitBool = false;
 			return false;
 		}
@@ -30,11 +31,11 @@ bool checkForQuit() {
 
 bool consoleInteraction() {
 	std::string text;
-	
+
 	std::cout << "CLAB>> ";
 	std::cin >> text;
 	
-	if (text == "quit") {
+	if (text == "\\quit" || text == "\\q") {
 		bool quitBool = checkForQuit();
 
 		if (quitBool) {
