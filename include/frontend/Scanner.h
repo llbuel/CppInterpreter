@@ -2,8 +2,8 @@
 
 #include <fstream>
 
-#include "Source.h"
-#include "Token.h"
+#include "frontend/Source.h"
+#include "frontend/Token.h"
 
 class Scanner {
 protected:

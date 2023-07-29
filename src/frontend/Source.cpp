@@ -1,12 +1,12 @@
 #include <iostream>
 #include <exception>
 
-#include "Source.h"
+#include "frontend/Source.h"
 
 char Source::m_EOL = '\n';
 char Source::m_EOF = (char)0;
 
-Source::Source(std::ifstream& reader) : m_lineNumber(0), m_currentPosition(-2), m_reader(reader) {}
+Source::Source(std::ifstream* reader) : m_lineNumber(0), m_currentPosition(-2), m_reader(reader) {}
 
 char Source::getCurrentChar() {
     try {
@@ -71,7 +71,7 @@ char Source::peekChar() {
 
 void Source::readLine() {
     try {
-        std::getline(m_reader, m_line);
+        std::getline(*m_reader, m_line);
         m_currentPosition = -1;
 
         if (!m_line.empty()) {
@@ -84,9 +84,9 @@ void Source::readLine() {
 }
 
 void Source::closeSource() {
-    if (m_reader.is_open()) {
+    if (m_reader->is_open()) {
         try {
-            m_reader.close();
+            m_reader->close();
         }
         catch (std::exception& e) {
             std::cout << "Could not close the source file: " << e.what() << "\n";

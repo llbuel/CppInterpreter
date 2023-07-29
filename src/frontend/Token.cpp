@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 
-#include "Token.h"
+#include "frontend/Token.h"
 
 Token::Token(Source source) : m_source(source), m_lineNumber(source.getLineNumber()), m_position(source.getPosition()) {
     extract();

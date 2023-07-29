@@ -1,24 +1,24 @@
 #pragma once
 
-#include "SymTab.h"
-#include "ICode.h"
-#include "Scanner.h"
-#include "Token.h"
-
 #include <memory>
 #include <exception>
+
+#include "intermediate/SymTab.h"
+#include "intermediate/ICode.h"
+#include "frontend/Scanner.h"
+#include "frontend/Token.h"
 
 class Parser {
 protected:
     static SymTab m_symTab;
     std::unique_ptr<ICode> m_ICode;
-    Scanner m_scanner;
+    Scanner& m_scanner;
 
 public:
-    Parser(Scanner scanner);
+    Parser(Scanner& scanner);
     
     virtual void parse();
-    virtual int getErrorCount() const = 0;
+    virtual int getErrorCount() const;
 
     Token getCurrentToken() const;
     Token getNextToken() const;

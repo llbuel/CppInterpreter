@@ -1,10 +1,18 @@
-#include "Parser.h"
+#include "frontend/Parser.h"
 
 #include <iostream>
 
 SymTab Parser::m_symTab{ nullptr };
 
-Parser::Parser(Scanner scanner) : m_scanner(scanner), m_ICode(createICode()) {}
+Parser::Parser(Scanner& scanner) : m_scanner(scanner), m_ICode(createICode()) {}
+
+void Parser::parse() {
+    throw std::logic_error("Base Parse class does not support parsing. Implement language-specific class for parsing.");
+}
+
+int Parser::getErrorCount() const {
+    throw std::logic_error("Base Parse class does not support error checking. Implement language-specific class for error checking.");
+}
 
 std::unique_ptr<ICode> Parser::createICode() {
     try {
@@ -24,5 +32,6 @@ Token Parser::getNextToken() const {
         return this->m_scanner.getNextToken();
     } catch (const std::exception& e) {
         std::cout << "Scanner failed to extract next token: " << e.what() << "\n";
+        return Token(nullptr);
     }
 }

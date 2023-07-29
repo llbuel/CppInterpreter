@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Source.h"
-#include "Token.h"
+#include "frontend/Source.h"
+#include "frontend/Token.h"
 
 class EofToken : public Token {
 protected:
