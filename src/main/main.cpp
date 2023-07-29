@@ -1,10 +1,10 @@
-#include "ConsoleFunctions/ConsoleFunctions.h"
+#include "App/App.h"
 
 int main() {
-	bool runLoop{ true };
+	App application;
 	
-	while (runLoop) {
-		runLoop = consoleInteraction();
+	while (!application.quit()) {
+		application.run();
 	}
 
 	return 0;

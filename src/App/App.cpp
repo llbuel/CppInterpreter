@@ -1,6 +1,10 @@
-#include "ConsoleFunctions/ConsoleFunctions.h"
+#include "App/App.h"
 
-bool checkForQuit() {
+void App::run() {
+	consoleInteraction();
+}
+
+bool App::checkForQuit() {
 	bool quitBool{ false };
 
 	while(!quitBool) {
@@ -11,13 +15,16 @@ bool checkForQuit() {
 
 		if (quitInput == "Y" || quitInput == "y") {
 			std::cout << "\nGoodbye!\n\n";
+
 			quitBool = true;
+
 			return true;
 		}
 		else if (quitInput == "N" || quitInput == "n") {
 			std::cout << "\n";
 			
 			quitBool = false;
+
 			return false;
 		}
 		else {
@@ -28,25 +35,16 @@ bool checkForQuit() {
 	return false;
 }
 
-bool consoleInteraction() {
+void App::consoleInteraction() {
 	std::string text;
 
 	std::cout << "CLAB>> ";
 	std::cin >> text;
 	
 	if (text == "\\quit" || text == "\\q") {
-		bool quitBool = checkForQuit();
-
-		if (quitBool) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		m_quitApp = checkForQuit();
 	}
 	else {
 		std::cout << "\n" << text << " = " << "\n\n    " << text << "\n\n";
-
-		return true;
 	}
 }
