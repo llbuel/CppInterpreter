@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -23,4 +22,7 @@ public:
     char getNextChar();
     char peekChar();
     void closeSource();
+
+    int getLineNumber() const { return m_lineNumber; }
+    int getPosition() const { return m_currentPosition; }
 };

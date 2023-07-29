@@ -2,18 +2,23 @@
 
 #include <fstream>
 
+#include "Source.h"
 #include "Token.h"
 
 class Scanner {
 protected:
-    Token extractToken();
+    Source m_source;
+
+    virtual Token extractToken() = 0;
+
+private:
+    Token m_currentToken;
 
 public:
-    Scanner();
+    Scanner(Source source);
     
     Token getCurrentToken() const;
-    Token getNextToken() const;
-    char getCurrentChar() const;
-    char getNextChar() const;
-
+    Token getNextToken();
+    char getCurrentChar();
+    char getNextChar();
 };

@@ -1,25 +1,27 @@
 #pragma once
 
 #include <string>
+#include <memory>
+
+#include "Source.h"
+#include "TokenValue.h"
 
 class TokenType;
 
 class Token {
 protected:
+	TokenType* m_type;
 	std::string m_text;
-	int m_value;
-
-	void extract();
-	char getCurrentChar() const;
-	char getNextChar() const;
-	char peekChar() const;
-
-private:
+	std::unique_ptr<TokenValue> m_value;
+	Source m_source;
 	int m_lineNumber;
 	int m_position;
 
-public:
-	Token();
+	void extract();
+	char getCurrentChar();
+	char getNextChar();
+	char peekChar();
 
-	TokenType* getType() const;
+public:
+	Token(Source source);
 };

@@ -1,3 +1,6 @@
+#include <iostream>
+#include <exception>
+
 #include "Source.h"
 
 char Source::m_EOL = '\n';
