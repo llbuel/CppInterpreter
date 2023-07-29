@@ -6,14 +6,21 @@
 
 class Source {
 private:
-    std::ifstream m_reader;
+    std::ifstream& m_reader;
     std::string m_line;
     int m_lineNumber;
     int m_currentPosition;
 
+    void readLine();
+
 public:
-    Source();
+    static char m_EOL;
+    static char m_EOF;
     
-    char getCurrentChar() const;
-    char getNextChar() const;
+    Source(std::ifstream& reader);
+
+    char getCurrentChar();
+    char getNextChar();
+    char peekChar();
+    void closeSource();
 };

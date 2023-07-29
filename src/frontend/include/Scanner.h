@@ -1,5 +1,7 @@
 #pragma once
 
+#include <fstream>
+
 #include "Token.h"
 
 class Scanner {
