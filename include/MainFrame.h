@@ -14,7 +14,7 @@ public:
 
 private:
 	void buildMenuBar();
-	void buildToolBar();
+	void buildRibbonBar();
 
 	void OnNew(wxCommandEvent& evt);
 	void OnOpen(wxCommandEvent& evt);

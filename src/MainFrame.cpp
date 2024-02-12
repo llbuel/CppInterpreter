@@ -24,7 +24,7 @@ enum TOOL_IDs {
 
 MainFrame::MainFrame(): wxFrame(nullptr, wxID_ANY, "C++ Interpreter") {
     buildMenuBar();
-    buildToolBar();
+    buildRibbonBar();
 
     CreateStatusBar();
     SetStatusText("Ready!");
@@ -46,7 +46,7 @@ void MainFrame::buildMenuBar() {
     wxMenuItem* importMenuItem = new wxMenuItem(fileMenu, IMPORT_FILE_MENU_ID, "&Import...");
     wxMenuItem* exportMenuItem = new wxMenuItem(fileMenu, EXPORT_FILE_MENU_ID, "&Export...");
 
-    wxMenuItem* exitMenuItem = new wxMenuItem(fileMenu, EXIT_FILE_MENU_ID, "Exit Optimum Odyssey\tCtrl+Q");
+    wxMenuItem* exitMenuItem = new wxMenuItem(fileMenu, EXIT_FILE_MENU_ID, "Exit\tCtrl+Q");
 
     fileMenu->Append(newMenuItem);
     fileMenu->Append(openMenuItem);
@@ -84,7 +84,7 @@ void MainFrame::buildMenuBar() {
     SetMenuBar(menuBar);
 }
 
-void MainFrame::buildToolBar() {
+void MainFrame::buildRibbonBar() {
     wxToolBar* toolBar = CreateToolBar();
 
     toolBar->AddTool(NEW_TOOL_ID, "New", wxArtProvider::GetBitmap("wxART_NEW"));
