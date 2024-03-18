@@ -18,10 +18,6 @@ The key strength of C++ that this program intends to adopt is the ability to com
 
 The key strenght of MATLAB that this program intends to adopt is the ease of use during development and debugging of programs, such as the execution of individual C++ statements, and the ability to inspect, manipulate, and modify data during debugging at runtime, all from within the GUI application.
 
-## Writing Compilers and Interpreters
-
-The architecture and design of this program is derived from the Pascal interpreter implemented in Java as developed by Ronald Mak in his book "Writing Compilers and Interpreters". The program was converted from Java to C++, and developed to interpret and interact with C++ programs.
-
 ## Dependencies
 
 This application requires wxWidgets to build. You can find install and build instructions here: https://wiki.wxwidgets.org/Compiling_and_getting_started
