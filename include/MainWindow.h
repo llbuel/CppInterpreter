@@ -1,20 +1,29 @@
 #pragma once
 #include <wx/wxprec.h>
-#include <vector>
-#include <random>
 
 #ifndef WX_PRECOMP
 	#include <wx/wx.h>
 #endif
 
-class MainFrame : public wxFrame
+class MainWindowFrame : public wxFrame
 {
 public:
-	MainFrame();
+	MainWindowFrame();
 
 private:
+	bool m_bypassCloseCheck = false;
+	bool m_workSaved = false;
+
+	wxMenuBar* m_menuBar = new wxMenuBar();
+	wxMenu* m_fileMenu = new wxMenu();
+	wxMenu* m_editMenu = new wxMenu();
+	wxToolBar* m_toolBar = CreateToolBar();
+	
+	void drawMainWindow();
+	
 	void buildMenuBar();
 	void buildRibbonBar();
+	void buildWorkspace();
 
 	void OnNew(wxCommandEvent& evt);
 	void OnOpen(wxCommandEvent& evt);
@@ -24,6 +33,10 @@ private:
 	void OnExport(wxCommandEvent& evt);
 	void OnUndo(wxCommandEvent& evt);
 	void OnRedo(wxCommandEvent& evt);
+	void OnRun(wxCommandEvent& evt);
+
 	void OnExit(wxCommandEvent& evt);
-	void OnExitConfirm(wxCommandEvent& evt);
+	void OnWindowClose(wxCloseEvent& evt);
+	void closeWindowCheck();
+	void OnExitConfirm();
 };

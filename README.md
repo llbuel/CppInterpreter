@@ -21,3 +21,9 @@ The key strenght of MATLAB that this program intends to adopt is the ease of use
 ## Writing Compilers and Interpreters
 
 The architecture and design of this program is derived from the Pascal interpreter implemented in Java as developed by Ronald Mak in his book "Writing Compilers and Interpreters". The program was converted from Java to C++, and developed to interpret and interact with C++ programs.
+
+## Dependencies
+
+This application requires wxWidgets to build. You can find install and build instructions here: https://wiki.wxwidgets.org/Compiling_and_getting_started
+
+If you are not familiar, the magic of wxWidgets is that it uses your system's built-in graphics APIs. So, building wxWidgets and the app locally will give you a *native* GUI. It is a C++ wrapper for native system APIs, so your code will be mostly portable (edge cases might not be supported). You can clone this repo, and as long as you have wxWidgets installed and your build system setup to point to the locally built libraries, it will give you a native GUI window.

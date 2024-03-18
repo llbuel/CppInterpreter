@@ -1,13 +1,13 @@
 #include "App.h"
-#include "MainFrame.h"
+#include "MainWindow.h"
 
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
-	MainFrame* mainFrame = new MainFrame();
-	mainFrame->Maximize(true);
-	mainFrame->Center();
+	MainWindowFrame* mainFrame = new MainWindowFrame();
+	wxInitAllImageHandlers();
 	mainFrame->Show();
+
 	return true;
 }
 
