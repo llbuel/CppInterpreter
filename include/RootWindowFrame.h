@@ -1,14 +1,20 @@
 #pragma once
+
 #include <wx/wxprec.h>
+#include <wx/splitter.h>
 
 #ifndef WX_PRECOMP
 	#include <wx/wx.h>
 #endif
 
-class MainWindowFrame : public wxFrame
+#include "Workspace.h"
+#include "ThemeManager.h"
+
+class RootWindowFrame : public wxFrame
 {
 public:
-	MainWindowFrame();
+	RootWindowFrame();
+	~RootWindowFrame();
 
 private:
 	bool m_bypassCloseCheck = false;
@@ -17,12 +23,20 @@ private:
 	wxMenuBar* m_menuBar = new wxMenuBar();
 	wxMenu* m_fileMenu = new wxMenu();
 	wxMenu* m_editMenu = new wxMenu();
+	wxMenu* m_optionsMenu = new wxMenu();
+
+	ThemeManager* m_themeManager = new ThemeManager(this);
+	wxDialog* m_themeDialog = new wxDialog(this, wxID_ANY, "Change Appearance", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxSTAY_ON_TOP);
+
 	wxToolBar* m_toolBar = CreateToolBar();
+
+	Workspace* m_workspace = new Workspace(this);
+	CommandWindow* m_commandWindow = m_workspace->GetCommandWindow();
 	
 	void drawMainWindow();
 	
 	void buildMenuBar();
-	void buildRibbonBar();
+	void buildToolBar();
 	void buildWorkspace();
 
 	void OnNew(wxCommandEvent& evt);
@@ -33,7 +47,10 @@ private:
 	void OnExport(wxCommandEvent& evt);
 	void OnUndo(wxCommandEvent& evt);
 	void OnRedo(wxCommandEvent& evt);
+	void OnThemeChange(wxCommandEvent& evt);
+
 	void OnRun(wxCommandEvent& evt);
+	void OnGlobalTextEntry(wxKeyEvent& evt);
 
 	void OnExit(wxCommandEvent& evt);
 	void OnWindowClose(wxCloseEvent& evt);
