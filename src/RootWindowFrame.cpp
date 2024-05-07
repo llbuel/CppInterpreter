@@ -4,7 +4,7 @@
 #include "RootWindowFrame.h"
 
 enum ELEMENT_IDs {
-    NEW_FILE_MENU_ID,
+    NEW_FILE_MENU_ID = 1,
     OPEN_FILE_MENU_ID,
     SAVE_FILE_MENU_ID,
     SAVE_AS_FILE_MENU_ID,
@@ -31,13 +31,13 @@ RootWindowFrame::RootWindowFrame() : wxFrame(nullptr, wxID_ANY, "C++ Laboratory"
     drawMainWindow();
     
     buildMenuBar();
-    buildToolBar();
-    buildWorkspace();
 
     CreateStatusBar();
     SetStatusText("Ready!");
+    
+    buildToolBar();
+    buildWorkspace();
 
-    Bind(wxEVT_IDLE, &RootWindowFrame::OnIdle, this);
     Bind(wxEVT_CLOSE_WINDOW, &RootWindowFrame::OnWindowClose, this);
 }
 
@@ -156,9 +156,21 @@ void RootWindowFrame::buildToolBar() {
     m_toolBar->Bind(wxEVT_TOOL, &RootWindowFrame::OnRun, this, RUN_TOOL_ID);
 
     m_toolBar->Realize();
+
+    m_toolbarSizer->Add(m_toolBar, 0, wxEXPAND);
+    m_toolbarPanel->SetSizer(m_toolbarSizer);
+
+    m_baseSizer->Add(m_toolbarPanel, 0, wxEXPAND);
 }
 
 void RootWindowFrame::buildWorkspace() {
+    m_workspaceSizer->Add(m_workspace, 1, wxEXPAND);
+    m_workspacePanel->SetSizer(m_workspaceSizer);
+
+    m_baseSizer->Add(m_workspacePanel, 1, wxEXPAND);
+
+    this->SetSizer(m_baseSizer);
+    
     m_workspace->DrawWorkspaceFrame();
 }
 

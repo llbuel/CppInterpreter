@@ -20,6 +20,12 @@ private:
 	bool m_bypassCloseCheck = false;
 	bool m_workSaved = false;
 
+	wxPanel* m_toolbarPanel = new wxPanel(this, wxID_ANY);
+	wxPanel* m_workspacePanel = new wxPanel(this, wxID_ANY);
+	wxBoxSizer* m_toolbarSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* m_workspaceSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* m_baseSizer = new wxBoxSizer(wxVERTICAL);
+
 	wxMenuBar* m_menuBar = new wxMenuBar();
 	wxMenu* m_fileMenu = new wxMenu();
 	wxMenu* m_editMenu = new wxMenu();
@@ -28,9 +34,9 @@ private:
 	ThemeManager* m_themeManager = new ThemeManager(this);
 	wxDialog* m_themeDialog = new wxDialog(this, wxID_ANY, "Change Appearance", wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxSTAY_ON_TOP);
 
-	wxToolBar* m_toolBar = CreateToolBar();
+	wxToolBar* m_toolBar = new wxToolBar(m_toolbarPanel, wxID_ANY);
 
-	Workspace* m_workspace = new Workspace(this);
+	Workspace* m_workspace = new Workspace(m_workspacePanel);
 	CommandWindow* m_commandWindow = m_workspace->GetCommandWindow();
 	
 	void drawMainWindow();
